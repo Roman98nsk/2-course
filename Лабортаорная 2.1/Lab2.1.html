@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML>
+<HEAD>
+
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<TITLE>Лабораторная 2.1</TITLE>
+
+</HEAD>
+
+<BODY link="blue" vlink="red" alink="green" bgcolor="lightgrey">
+  <FORM>
+  <img src="1.png" name="LeftPchr" id="img1"  width=470 height=470>
+  <img src="2.png" name="RightPchr" id="img2"  width =500 height=500>
+  <input type="button" id="Btn" value="Обменять">
+  </FORM>
+
+  <SCRIPT>
+    (function () {
+      var Btn = document.getElementById("Btn");
+      Btn.onclick=function () {
+        var img1 = document.getElementById("img1");
+        var img2 = document.getElementById("img2");
+
+        return function () {
+          var chng = img1.src;
+          img1.src = img2.src;
+          img2.src = chng;
+        }
+      }();
+    })();
+  </SCRIPT>
+</BODY>
+
+</HTML>
