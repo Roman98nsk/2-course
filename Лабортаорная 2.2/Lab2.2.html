@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<TITLE>Лабораторная 2.2</TITLE>
+
+</HEAD>
+
+  <SCRIPT language="JavaScript">
+			var delay = 900;				// значение задержки
+			var StImgNb = 1; 				// стартовый номер картинки
+			var Imgofarr = new Image();	// массив с названиями картинок
+
+			for (i = 0; i < 12; i++) {
+					Imgofarr[i] = new Image();
+					Imgofarr[i].src = "s" + i + ".gif";
+			}
+
+      function go_animation() {
+				if (Flag == 1) {
+					document.anim.src = Imgofarr[StImgNb].src;
+					StImgNb++;
+					if (StImgNb >= 12) {
+						StImgNb = 1;
+					}
+					setTimeout('go_animation()', delay);
+				}
+      }
+      function stop_animation() {
+        if (Flag == 0) {
+          document.anim.src = stop;
+        }
+      }
+
+      function start() {
+          setTimeout('go_animation()', delay);
+          Flag = 1;
+      }
+
+      function stop() {
+          Flag = 0;
+      }
+
+      function faster() {
+        delay = delay - 200;
+        if(delay < 0)
+          delay = 50;
+      }
+
+      function slowly() {
+				delay = delay + 200;
+				if(delay > 1500)
+					delay = 1500;
+			}
+
+		</SCRIPT>
+	</HEAD>
+
+	<BODY>
+		<img name="anim" src="s1.gif">
+		<FORM>
+			<input type="button" value="Старт" onclick="start()">
+			<input type="button" value="Стоп" onclick="stop()">
+			<input type="button" value="Быстрее" onclick="faster()">
+			<input type="button" value="Медленнее" onclick="slowly()">
+		</FORM>
+	</BODY>
+</HTML>
