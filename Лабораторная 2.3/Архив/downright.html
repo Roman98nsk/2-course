@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML>
+
+<HEAD>
+
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<TITLE>Лабораторная 2.3</TITLE>
+
+  <script>
+
+    function on_side_sqr(text)
+      {text.sqr.value=text.numb.value * text.numb.value}
+
+  </script>
+
+</HEAD>
+
+<BODY BGCOLOR="green" TEXT="black">
+
+  <H1 align = center>Вычисление площади квадрата</H1>
+  <P>Выделите поле 'сторона'</P>
+
+    <FORM name="forml">
+      Сторона: <input type="text"  size=7 name="numb"
+                      onSelect="on_side_sqr(forml)">
+      <P>Площадь: <input type="text" size=7 name="sqr"></P>
+
+    </FORM>
+
+</BODY>
+
+</HTML>
