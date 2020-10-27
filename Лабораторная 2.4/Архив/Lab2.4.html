@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML>
+
+<HEAD>
+  <TITLE>Лабораторная 2.4</TITLE>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+</HEAD>
+
+<BODY>
+
+<P align=center>
+
+<SCRIPT>
+
+  document.write(setClock())
+  document.write(setDate())
+
+  function setClock() {
+    var text = ""
+    var openImage = "<IMG SRC=\"dg"
+    var closeImage = ".gif\">"
+    var now = new Date()
+    var hour = now.getHours()
+    var minute = now.getMinutes()
+
+    if (hour >= 12) {
+		    ampm = "pm" //после полудня
+    }
+    else
+		    ampm = "am" //до полудня
+
+	  hour += ""
+    for (var i = 0; i < hour.length; ++i) {
+      text += openImage + hour.charAt(i) + closeImage
+    }
+
+    text += openImage + "c.gif\">"
+
+    if (minute < 10) {
+        minute = "0" + minute
+    }
+
+    minute += ""
+    for (var i = 0; i < minute.length; ++i) {
+      text += openImage + minute.charAt(i) + closeImage
+    }
+
+    text += openImage + ampm + closeImage
+
+	return text
+	}
+
+  function setDate() {
+    var text = ""
+    var openImage = "<IMG SRC=\"dg"
+    var closeImage = ".gif\">"
+    var now = new Date()
+    var date = now.getDate()
+    var month = now.getMonth()
+    var year = now.getFullYear()
+
+    date +=""
+    for (var i = 0; i < date.length; ++i) {
+      text += openImage + date.charAt(i) + closeImage
+    }
+
+    text += openImage + "p.gif\">"
+
+    month++
+    month +=""
+    for (var i = 0; i < month.length; ++i) {
+      text += openImage + month.charAt(i) + closeImage
+    }
+
+    text += openImage + "p.gif\">"
+
+    year +=""
+    for (var i = 0; i < year.length; ++i) {
+      text += openImage + year.charAt(i) + closeImage
+    }
+
+	return text
+}
+
+</SCRIPT>
