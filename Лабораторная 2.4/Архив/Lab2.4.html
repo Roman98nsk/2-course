@@ -8,12 +8,7 @@
 
 <BODY>
 
-<P align=center>
-
 <SCRIPT>
-
-  document.write(setClock())
-  document.write(setDate())
 
   function setClock() {
     var text = ""
@@ -22,6 +17,7 @@
     var now = new Date()
     var hour = now.getHours()
     var minute = now.getMinutes()
+    var second = now.getSeconds()
 
     if (hour >= 12) {
 		    ampm = "pm" //после полудня
@@ -32,6 +28,7 @@
 	  hour += ""
     for (var i = 0; i < hour.length; ++i) {
       text += openImage + hour.charAt(i) + closeImage
+
     }
 
     text += openImage + "c.gif\">"
@@ -48,7 +45,8 @@
     text += openImage + ampm + closeImage
 
 	return text
-	}
+
+}
 
   function setDate() {
     var text = ""
@@ -58,6 +56,10 @@
     var date = now.getDate()
     var month = now.getMonth()
     var year = now.getFullYear()
+
+    if (date < 10){
+        date = "0" + date
+    }
 
     date +=""
     for (var i = 0; i < date.length; ++i) {
@@ -80,6 +82,18 @@
     }
 
 	return text
+
 }
 
+  function rec(){
+
+    document.open()
+    document.write(setClock())
+    document.write(setDate())
+    document.close()
+  }
+
+  setInterval(rec, 1000);
+
 </SCRIPT>
+</BODY>
