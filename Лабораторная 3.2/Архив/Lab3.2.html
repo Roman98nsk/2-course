@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<HTML>
+
+  <HEAD>
+
+    <TITLE>Лабораторная 3.2</TITLE>
+    <META charset="UTF-8">
+
+  </HEAD>
+
+<SCRIPT>
+
+  var coun, namec, datec;
+  var year, mounth,day,hour,min, second;
+
+  function setCookie(name, value, expire) {
+  	document.cookie = name + "=" + escape(value) + ((expire == null) ? "" : ("; expires=" + expire.toGMTString()))
+    }
+
+  function getCookie(Name) {
+  	var search = Name + "="
+  		//Создается строка для поиска в document.cookie
+  	if (document.cookie.length > 0) {
+  		offset = document.cookie.indexOf(search)
+  			//Поиск cookie по ее имени
+  		if (offset != -1) {
+  			offset += search.length
+  			end = document.cookie.indexOf(";", offset)
+  				//Определили положение нужной cookie, и по индексам вырежем ее
+  			if (end == -1)
+  				end = document.cookie.length
+  			return unescape(document.cookie.substring(offset, end))
+  				//Вернули подстроку, содержащюю нужное значение cookie
+  		}
+  	}
+  }
+  function delete_cookie ( cookie_name ) {
+    setCookie(cookie_name, "", {
+      'max-age': -1
+    })
+  }
+
+   window.onload = function() {
+   	let sn = getCookie("name");
+   	if(sn == null || sn == "")
+   	{
+   		text = "Зарегистрируйтесь!";
+   	}
+   	else
+   	{
+   		var text = "Привет,"+sn;
+   		namec = sn;
+   		sn = getCookie("countEnter");
+   		coun = parseInt(sn);
+   		coun++;
+   		text += "<br> Количество посещений этой страницы: "+coun;
+   		sn = getCookie("expires")
+   		datec = sn;
+      var d = new Date();
+   		d.setTime(Date.parse(datec));
+   		var d1 = new Date();
+   		mounth = d1.getMonth()-d.getMonth();
+   		day = (d1.getDate()-d.getDate());
+   		min =(d1.getMinutes()-d.getMinutes());
+   		hour = (d1.getHours()-d.getHours());
+   		second = (d1.getSeconds()-d.getSeconds());
+  		text += "<br> Вы были на этой странице: "+mounth+" месяцев, "+day+" дней, "+hour+" часов, "+min+" минут, "+ second+"секунд";
+  		var today = new Date()
+  		var expires = new Date()
+  		expires.setTime(today.getTime() + 1000*60*60*24*365);
+  		setCookie("expires", expires.toGMTString());
+  		setCookie("countEnter", coun);
+    }
+  	document.getElementById('d1').innerHTML = text;
+  }
+
+
+  function c_regEdit() {
+  	var today = new Date()
+  	var expires = new Date()
+  	expires.setTime(today.getTime() + 1000*60*60*24*365);
+  	setCookie("name", document.getElementById("text1").value);
+  	setCookie("expires", expires.toGMTString());
+  	setCookie("countEnter", 0);
+  	alert("Куки сохранены");
+  }
+
+  function c_regNull() {
+  	setCookie("name", "");
+  	setCookie("countEnter", 0);
+  	alert("Куки удалены");
+  }
+
+</SCRIPT>
+
+  <BODY>
+
+
+
+  <form onload = "onload_form();">
+
+    <div class = "divRezult" id = "d1"></div>
+
+    Введите имя: <input type = "text" id = "text1">
+    <p><input type = "button" value = "Зарегестрироваться" onclick = "c_regEdit()">
+      <br>
+      <input type = "button" value = "Обнулить посещения" onclick = "c_regNull()">
+  </form>
+
+
+</BODY>
+
+</HTML>
