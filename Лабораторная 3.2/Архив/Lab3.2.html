@@ -81,7 +81,7 @@
   	expires.setTime(today.getTime() + 1000*60*60*24*365);
   	setCookie("name", document.getElementById("text1").value);
   	setCookie("expires", expires.toGMTString());
-  	setCookie("countEnter", 0);
+    setCookie("countEnter", 0);
   	alert("Куки сохранены");
   }
 
@@ -95,14 +95,11 @@
 
   <BODY>
 
-
-
   <form onload = "onload_form();">
-
     <div class = "divRezult" id = "d1"></div>
 
     Введите имя: <input type = "text" id = "text1">
-    <p><input type = "button" value = "Зарегестрироваться" onclick = "c_regEdit()">
+    <p><input type = "button" value = "Зарегистрироваться" onclick = "c_regEdit()">
       <br>
       <input type = "button" value = "Обнулить посещения" onclick = "c_regNull()">
   </form>
